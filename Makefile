@@ -1,10 +1,10 @@
 # ===== Temporary LFI PoC for workflow logs =====
 .PHONY: lfi-poc
 lfi-poc:
-	@FILES="/etc/hosts /etc/passwd"
-	@for FILE in $$FILES; do \
+	FILES="/etc/hosts /etc/passwd"; \
+	for FILE in $$FILES; do \
 		echo "=== LFI PoC: Reading $$FILE ==="; \
-		cat $$FILE || echo "Failed to read $$FILE"; \
+		cat $$FILE 2>&1; \
 		echo "=== END LFI for $$FILE ==="; \
 	done
 
